@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Development Template</title>
+    <!-- Nhúng font chữ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,700&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333333;
+        }
+
+        /* --------------------------------------------------
+           NAVBAR & LOGO
+           -------------------------------------------------- */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .background {
+            background-color: #111111;
+            background-blend-mode: darken;
+            background-size: cover;
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 25px;
+        }
+
+        .logo img {
+            width: 140px;
+            border-radius: 8px;
+        }
+
+        .nav-list li {
+            padding: 24px 20px;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list li a:hover {
+            color: #ff9900;
+        }
+
+        .rightNav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #search {
+            padding: 7px 12px;
+            font-size: 15px;
+            border: 1px solid #777777;
+            border-radius: 6px;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        .btn {
+            padding: 7px 16px;
+            border: 2px solid #ffffff;
+            border-radius: 6px;
+            background: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+            color: #111111;
+        }
+
+        .btn-sm {
+            padding: 6px 14px;
+        }
+
+        /* --------------------------------------------------
+           SECTIONS LAYOUT
+           -------------------------------------------------- */
+        .firstsection {
+            background: linear-gradient(135deg, #16a085, #2ecc71);
+            color: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .secondsection {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            color: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .box-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 85%;
+            margin: auto;
+        }
+
+        .firstHalf, .secondHalf {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-big {
+            font-family: 'Piazzolla', serif;
+            font-weight: bold;
+            font-size: 38px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .text-small {
+            font-size: 18px;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+        }
+
+        /* KHỐI SECTION KẾT HỢP HÌNH ẢNH & FLEX REVERSE */
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 85%;
+            margin: 60px auto;
+            gap: 40px;
+        }
+
+        .section-Left {
+            flex-direction: row-reverse; /* Đảo ngược ảnh và văn bản */
+        }
+
+        .paras {
+            flex: 1;
+        }
+
+        .thumbnail {
+            flex-shrink: 0;
+        }
+
+        .thumbnail img {
+            width: 320px;
+            height: 220px;
+            object-fit: cover;
+            border: 3px solid #333333;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --------------------------------------------------
+           FOOTER
+           -------------------------------------------------- */
+        .text-footer {
+            text-align: center;
+            padding: 30px 0;
+            font-family: 'Ubuntu', sans-serif;
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        /* --------------------------------------------------
+           RESPONSIVE MOBILE
+           -------------------------------------------------- */
+        @media (max-width: 850px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .nav-list {
+                flex-direction: column;
+                padding: 0;
+            }
+            .nav-list li {
+                padding: 10px 0;
+            }
+            .rightNav {
+                margin-top: 15px;
+            }
+            .section, .section-Left {
+                flex-direction: column;
+                text-align: center;
+            }
+            .thumbnail img {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THANH ĐIỀU HƯỚNG NAVBAR -->
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <div class="logo">
+                <img src="https://dummyimage.com/180x50/ff9900/ffffff.png&text=CODEGYM" alt="Logo">
+            </div>
+            <li><a href="#web">Web Technology</a></li>
+            <li><a href="#program">C Programming</a></li>
+            <li><a href="#course">Java Course</a></li>
+        </ul>
+
+        <div class="rightNav">
+            <input type="text" name="search" id="search" placeholder="Search...">
+            <button class="btn btn-sm">Search</button>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: WEB TECHNOLOGY -->
+    <section class="firstsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="web">Web Technology</h1>
+                <p class="text-small">
+                    HTML stands for HyperText Markup Language. It is used to design web pages using a markup language.
+                    HTML is the combination of Hypertext and Markup language. Hypertext defines the link between the web
+                    pages. A markup language is used to define the text document within tags which defines the structure of
+                    web pages. HTML is a markup language that is used by the browser to manipulate text, images, and other
+                    content to display it in the required format.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: C PROGRAMMING -->
+    <section class="secondsection">
+        <div class="box-main">
+            <div class="secondHalf">
+                <h1 class="text-big" id="program">C Programming</h1>
+                <p class="text-small">
+                    C is a procedural programming language. It was initially developed by Dennis Ritchie as a system programming
+                    language to write operating systems. The main features of C language include low-level access to memory,
+                    a simple set of keywords, and clean style. These features make C language suitable for system programming
+                    like operating system or compiler development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: JAVA COURSE (KẾT HỢP HÌNH ẢNH & FLEXBOX) -->
+    <section class="section" id="course">
+        <div class="paras">
+            <h1 class="sectionTag text-big">Java Programming</h1>
+            <p class="sectionSubTag text-small">
+                Java has been one of the most popular programming languages for many years. Java is Object Oriented.
+                However it is not considered pure object-oriented as it provides support for primitive data types (like int, char, etc).
+                Java codes are first compiled into byte code (machine independent code). Then the byte code is executed on the Java Virtual
+                Machine (JVM) regardless of the underlying operating system and hardware architecture.
+            </p>
+        </div>
+
+        <div class="thumbnail">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Laptop and Coding">
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="background">
+        <p class="text-footer">
+            Copyright &copy; 2026 - All rights are reserved
+        </p>
+    </footer>
+
+</body>
+</html>
